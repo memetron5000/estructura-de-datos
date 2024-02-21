@@ -1,46 +1,69 @@
-import org.w3c.dom.DOMStringList;
 import java.util.Scanner;
-
-public class Usuario {
+public class Usuario extends ejecutar{
     private String nombre;
     private Long ID;
-    private String fecha_nacimiento;
+    private Fecha fecha_nacimiento;
     private String ciudad_nacimiento;
     private Long tel;
     private String email;
-    private String dir;
-    public static void main(String[] args) {
+    private Direccion dir;
 
-        System.out.println("ingrese el dia de nacimiento");
-        Scanner dia= new Scanner(System.in);
-        System.out.println("ingrese el mes de nacimiento");
-        Scanner mes= new Scanner(System.in);
-        System.out.println("ingrese el año de nacimiento");
-        Scanner a = new Scanner(System.in);
+    Scanner scanner= new Scanner(System.in);
+    public Usuario(){
+    
+    }
+
+    public Usuario (String n, long id) {
+        this.nombre = n;
+        this.ID = id;
         
-        System.out.println("ingrese su nombre de usuario");
-        Scanner nombre= new Scanner(System.in);
-        System.out.println("ingrese su id");
-        Scanner ID= new Scanner(System.in);
-        System.out.println("ingrese su ciudad de nacimiento");
-        Scanner ciudad_nacimiento= new Scanner(System.in);
-        System.out.println("ingrese telefono");
-        Scanner tel= new Scanner(System.in);
-        System.out.println("ingrese su email");
-        Scanner email= new Scanner(System.in);
+    }
 
-        public usuario(String n, long ID){
-            this.usuario =n
-        }
+    public void setNombre(String n) {
+        this.nombre = n ;
+    }
+    public void setID(long id) {
+        this.ID = id ;
+    }
+    public void setFecha_nacimiento(Fecha f) { 
+        this.fecha_nacimiento = f ;
+    }
+    public void setCiudad_nacimiento(String c){
+        this.ciudad_nacimiento = c ; 
+    }
+    public void setTel (long t){
+        this.tel = t ;
+    }
+    public void setEmail(String e){
+        this.email = e ;
+    }
+    public void setDir(Direccion d){
+        this.dir = d;
+    }
 
-
-        public void nombre(String n){
-            
-        }
-        
-        
-
-
-
+    public String getNombre(){
+        return nombre;
+    }
+    public long getID(){
+        return ID;
+    }
+    public Fecha getFecha_nacimiento(){
+        return fecha_nacimiento;
+    }
+    public String getCiudad_nacimiento(){
+        return ciudad_nacimiento;
+    }
+    public long getTel(){
+        return tel;
+    } 
+    public String getEmail(){
+        return email;
+    }
+    public Direccion getDir() {
+        return dir;
+    }
+    public String toString (){
+        return "\n Aca esta su resumen de informacion, "+nombre+"\n ID= "+ID+"\n Telefono= "+tel+"\n Email= "+email;
     }
 }
+

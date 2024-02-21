@@ -1,4 +1,4 @@
-public class Fecha extends Usuario{
+public class Fecha extends ejecutar{
     private short dd;
     private short mm;
     private short aa;
@@ -31,5 +31,8 @@ public class Fecha extends Usuario{
     }
     public short getA(){
         return aa;
+    }
+    public String toString (){
+        return "fecha de nacimiento= "+dd + "-" + mm + "-" + aa;
     }
 }
