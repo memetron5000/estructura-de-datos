@@ -25,7 +25,7 @@ public class Usuario extends ejecutar{
     public void setID(long id) {
         this.ID = id ;
     }
-    public void setFecha_nacimiento(Fecha f) { 
+    public void setFecha_nacimiento(Fecha f) {
         this.fecha_nacimiento = f ;
     }
     public void setCiudad_nacimiento(String c){
@@ -44,7 +44,7 @@ public class Usuario extends ejecutar{
     public String getNombre(){
         return nombre;
     }
-    public long getID(){
+    public Long getID(){
         return ID;
     }
     public Fecha getFecha_nacimiento(){
@@ -53,7 +53,7 @@ public class Usuario extends ejecutar{
     public String getCiudad_nacimiento(){
         return ciudad_nacimiento;
     }
-    public long getTel(){
+    public Long getTel(){
         return tel;
     } 
     public String getEmail(){
