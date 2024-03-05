@@ -63,7 +63,7 @@ public class Usuario extends ejecutar{
         return dir;
     }
     public String toString (){
-        return "\n Aca esta su resumen de informacion, "+nombre+"\n ID= "+ID+"\n Telefono= "+tel+"\n Email= "+email;
+        return "Nombre= "+nombre+" ID= "+ID+" Telefono= "+tel+" Email= "+email;
     }
 }
 

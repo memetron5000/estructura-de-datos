@@ -7,7 +7,7 @@ import java.io.IOException;
 public class ejecutar {
 
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
 
         Scanner scanner =new Scanner(System.in);
         Usuario u = new Usuario();
@@ -15,7 +15,7 @@ public class ejecutar {
         Fecha f = new Fecha();
         Agenda a = new Agenda(5);
 
-        a.archivodesc();
+        
         //base de usuarios
         Usuario u1 = new Usuario();
         Usuario u2 = new Usuario();
@@ -59,7 +59,7 @@ public class ejecutar {
         a.agregar(u2);
 
 
-        String[] usuario3={"Angel Cachon","1237382","20-06-2004","Calle65 12-2 barrio Volador - Medallo", "3132958063", "angca@gmail.com"};
+        String[] usuario3={"Angel Cachon","5137382","20-06-2004","Calle65 12-2 barrio Volador - Medallo", "3132958063", "angca@gmail.com"};
         u3.setNombre(usuario3[0]);
         u3.setID(Long.valueOf(usuario3[1]));
         f.setDia((short)20);
@@ -76,7 +76,7 @@ public class ejecutar {
         a.agregar(u3);
 
 
-        String[] usuario4={"Jesus Armando","1726332","04-07-2000","Call63 42-21 barrio Volador - Medallo", "3132958063", "yisus@gmail.com"};
+        String[] usuario4={"Jesus Armando","9266472","04-07-2000","Call63 42-21 barrio Volador - Medallo", "3132958063", "yisus@gmail.com"};
         u4.setNombre(usuario4[0]);
         u4.setID(Long.valueOf(usuario4[1]));
         f.setDia((short)04);
@@ -93,7 +93,7 @@ public class ejecutar {
         a.agregar(u4);
 
 
-        String[] usuario5 ={"Jesus Armando","1726332","04-07-2000","Call63 42-21 barrio sabaneta - medallo", "313234063", "chimbo@gmail.com"};
+        String[] usuario5 ={"Jesus Armando","1306332","04-07-2000","Call63 42-21 barrio sabaneta - medallo", "313234063", "chimbo@gmail.com"};
         u5.setNombre(usuario5[0]);
         u5.setID(Long.valueOf(usuario5[1]));
         f.setDia((short)20);
@@ -109,20 +109,18 @@ public class ejecutar {
         u5.setEmail(usuario5[5]);
         a.agregar(u5);
 
-
-
         System.out.println("para cargar prueba 1 escriba 1, para cargar prueba 2 escriba 2, o para continuar con el progarma original digite cualquier otra cosa");
         int sel = scanner.nextInt();
 
         if (sel==1) {
             System.out.println("ingrese el id del usuario que desee buscar");
             Long busc =scanner.nextLong();
-            System.out.println(Math.toIntExact(busc));
+            System.out.println(a.search_id(busc));
+            a.toFile();
+            
         }
         else if (sel==2) {
-
-        }
-
+            
         System.out.println("Ingrese su nombre de usuario");
         String nombre = scanner.nextLine();
         u.setNombre(nombre);
@@ -184,6 +182,32 @@ public class ejecutar {
         System.out.println(d.toString());
         
         scanner.close();
-        
+        }
+
+        Agenda agenda = new Agenda(5); // Ajusta el tamaño del arreglo según tus necesidades
+
+        try {
+            // Llama al método importar para inicializar los usuarios desde el archivo
+            agenda.importar();
+
+            // Imprime en pantalla los 5 usuarios usando el método printUsers
+            agenda.printUsers();
+
+            // Elimina un usuario por su ID (ajusta el ID según tu necesidad)
+            Long idToDelete = 12345L; // Ejemplo de ID a eliminar
+            boolean deleted = agenda.deleteById(idToDelete);
+
+            if (deleted) {
+                System.out.println("Usuario con ID " + idToDelete + " eliminado con éxito.");
+            } else {
+                System.out.println("Usuario con ID " + idToDelete + " no encontrado.");
+            }
+
+            // Llama al método toFile para almacenar los usuarios actualizados en un nuevo archivo
+            agenda.toFile();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
