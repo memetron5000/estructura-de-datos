@@ -57,4 +57,8 @@ public class Direccion extends ejecutar {
         
     
 }
+    public void setCiudad_nacimiento(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setCiudad_nacimiento'");
+    }
 }

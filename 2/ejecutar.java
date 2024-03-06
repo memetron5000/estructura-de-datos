@@ -109,6 +109,9 @@ public class ejecutar {
         u5.setEmail(usuario5[5]);
         a.agregar(u5);
 
+
+
+
         System.out.println("para cargar prueba 1 escriba 1, para cargar prueba 2 escriba 2, o para continuar con el progarma original digite cualquier otra cosa");
         int sel = scanner.nextInt();
 
@@ -116,11 +119,18 @@ public class ejecutar {
             System.out.println("ingrese el id del usuario que desee buscar");
             Long busc =scanner.nextLong();
             System.out.println(a.search_id(busc));
-            a.toFile();
+            a.toFileS();
             
         }
         else if (sel==2) {
-            
+            a.importar();
+            a.printUsers();
+            System.out.println("ingrese el id de la persona a eliminar");
+            int id= scanner.nextInt();
+            System.out.println(a.eliminar(id));
+            a.toFile();
+        }
+        else if (sel==3) {
         System.out.println("Ingrese su nombre de usuario");
         String nombre = scanner.nextLine();
         u.setNombre(nombre);
@@ -182,32 +192,6 @@ public class ejecutar {
         System.out.println(d.toString());
         
         scanner.close();
-        }
-
-        Agenda agenda = new Agenda(5); // Ajusta el tamaño del arreglo según tus necesidades
-
-        try {
-            // Llama al método importar para inicializar los usuarios desde el archivo
-            agenda.importar();
-
-            // Imprime en pantalla los 5 usuarios usando el método printUsers
-            agenda.printUsers();
-
-            // Elimina un usuario por su ID (ajusta el ID según tu necesidad)
-            Long idToDelete = 12345L; // Ejemplo de ID a eliminar
-            boolean deleted = agenda.deleteById(idToDelete);
-
-            if (deleted) {
-                System.out.println("Usuario con ID " + idToDelete + " eliminado con éxito.");
-            } else {
-                System.out.println("Usuario con ID " + idToDelete + " no encontrado.");
-            }
-
-            // Llama al método toFile para almacenar los usuarios actualizados en un nuevo archivo
-            agenda.toFile();
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }

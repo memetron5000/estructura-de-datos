@@ -57,77 +57,35 @@ public class Agenda extends ejecutar{
     }
 
     public boolean eliminar(int id){
-        int inx = buscar(id);
-        if (inx == -1){
-            return false;
-            
-        }
-        else{
-            for (int j = inx; j < no_reg; ){
-                registro[j]= registro[j+1];
-            no_reg--;
-            return true;
+        boolean comp=false;
+        for(int i=0 ; i<userdata.size() ; i++) {
+            String tem=userdata.get(i);//obtiene cada linea
+            String[] temp =tem.split("\\s");//separa por espacios
+            if(Integer.parseInt(temp[4])==(id)){
+                userdata.remove(i); // esto esta malo hp
+                comp=true;
             }
         }
-		return false;
+        
+		return comp;
     }
 
-        // public void toFile() throws IOException{
-        // String carpetadescargas = System.getProperty("user.home") + File.separator + "Downloads" + File.separator + "Agenda.txt";
-        // FileWriter fw= null;
-        // PrintWriter pw = null;
-        // try {
-        //     fw = new FileWriter(carpetadescargas);
-        //     pw = new PrintWriter(fw);
-        //     for (Usuario i : registro) {
-        //     pw.println(i);
-        //     }
-        // } catch (Exception e) {
-        //     e.printStackTrace();
-        // }finally{
-        //     fw.close();
-        // }
-
-
-
-
-
-        
-        // try (FileReader fr = new FileReader(carpetadescargas);
-        //      BufferedReader br = new BufferedReader(fr);
-        //      FileWriter fw = new FileWriter(carpetadescargas, true);
-        //      BufferedWriter bw = new BufferedWriter(fw)) {
-
-        //     String linea;
-        //     boolean encontrado = false;
-
-        //     // Lectura del fichero
-        //     while ((linea = br.readLine()) != null) {
-        //         String linea1=;
-        //         if (linea.isEmpty()) {
-        //             // Agregar nueva línea al final del archivo
-        //             String hola = "Agregando algo";
-        //             bw.write(hola);
-        //             bw.newLine();
-        //             System.out.println("Se ha agregado nueva información al archivo.");
-        //             encontrado = true;
-        //             break;
-        //         } 
-        //         else {
-        //             System.out.println(linea);
-        //         }
-        //     }
-
-        //     if (!encontrado) {
-        //         String hola = "Agregando algo";
-        //         bw.write(hola);
-        //         bw.newLine();
-        //         System.out.println("Se ha agregado nueva información al final del archivo.");
-        //     }
-
-        // } catch (IOException e) {
-        //     e.printStackTrace();
-        // }
+        public void toFileS() throws IOException{
+        String carpetadescargas = System.getProperty("user.home") + File.separator + "Downloads" + File.separator + "Agenda.txt";
+        FileWriter fw= null;
+        PrintWriter pw = null;
+        try {
+            fw = new FileWriter(carpetadescargas);
+            pw = new PrintWriter(fw);
+            for (Usuario i : registro) {
+            pw.println(i);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            fw.close();
+        }
+    }
 
     public Long search_id(Long id){
         Long j=Long.valueOf(0);
@@ -144,7 +102,9 @@ public class Agenda extends ejecutar{
         return fin;
     }
 
+        private ArrayList<String> userdata = new ArrayList<String>();
         public void importar() throws IOException {
+        String carpetadescargas = System.getProperty("user.home") + File.separator + "Downloads" + File.separator + "Agenda.txt";
         FileReader fr = null;
         BufferedReader br = null;
         try {
@@ -153,17 +113,8 @@ public class Agenda extends ejecutar{
             
             String linea;
             while ((linea = br.readLine()) != null) {
-                String[] userData = linea.split(","); // Assuming user data is comma-separated
-                if (userData.length == 4) {
-                    // Assuming user data format: ID,Nombre,Apellido,Edad
-                    Long id = Long.parseLong(userData[0]);
-                    String nombre = userData[1];
-                    //String apellido = userData[2];
-                    //int edad = Integer.parseInt(userData[3]);
+                userdata.add(linea);
 
-                    Usuario newUser = new Usuario(nombre, id);
-                    agregar(newUser);
-                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -176,10 +127,11 @@ public class Agenda extends ejecutar{
             }
         }
     }
+    
 
     public void printUsers() {
-        for (int i = 0; i < no_reg; i++) {
-            System.out.println(registro[i].toString());
+        for (String i : userdata) {
+            System.out.println(i);
         }
     }
 
@@ -195,15 +147,15 @@ public class Agenda extends ejecutar{
         return false;
     }
 
-    public void toFile() throws IOException {
+        public void toFile() throws IOException {
         String outputFile = System.getProperty("user.home") + File.separator + "Downloads" + File.separator + "Agenda2.txt";
         FileWriter fw = null;
         PrintWriter pw = null;
         try {
             fw = new FileWriter(outputFile);
             pw = new PrintWriter(fw);
-            for (int i = 0; i < no_reg; i++) {
-                pw.println(registro[i].toString());
+            for(String i : userdata){
+                pw.println(i);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -213,54 +165,5 @@ public class Agenda extends ejecutar{
             }
         }
     }
+
 }
-
-
-
-
-    // public void importar() throws IOException {
-    //     String carpetadescargas = System.getProperty("user.home") + File.separator + "Downloads" + File.separator + "Agenda.txt";
-    //     FileReader fr=null;
-    //     BufferedReader br=null;
-    //     try{
-    //         fr= new FileReader(carpetadescargas);
-    //         br= new BufferedReader(fr);
-    //         String linea;
-    //         while(br.readLine()!=null);
-    //     }
-    //     catch(IOException e){
-    //         e.printStackTrace();
-    //     }
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //     String rutaArchivo = System.getProperty("user.home") + File.separator + "Downloads" + File.separator +"Agenda.txt";
-    //     FileReader fr = new FileReader(rutaArchivo);
-    //     try(BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
-    //         String linea;
-    //         while ((linea = br.readLine()) != null) {
-    //             Usuario usuario = parsearLineaUsuario(linea);
-
-    //             agregar(usuario);
-    //         }
-    //      }catch (IOException e) {
-    //         e.printStackTrace;
-    //     }
-                
-    //     }}
-
