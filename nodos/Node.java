@@ -1,10 +1,10 @@
-public class Nodo{
-    private Node head;
+public class Node{
+    private Object data;
     private  Node next;
     
     public void Node(){
-        data = null
-        next = null
+        data = null ;
+        next = null ;
     }
 
     public void Node(Object e){
@@ -22,7 +22,7 @@ public class Nodo{
     public Object getData(){
         return data ;
     }
-    public Node getNext(){
+    public Node getNext(){ 
         return next ;
     }
 
