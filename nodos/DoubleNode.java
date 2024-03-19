@@ -1,15 +1,15 @@
-public class DoubleNode {
+public class DoubleNode extends ejec{
     private Object data ;
     private DoubleNode next ;
     private DoubleNode prev ;
 
-    public void DoubleNode(){
+    public DoubleNode(){
         data = null ;
         next = null ;
         prev = null ;
     }
 
-    public void DoubleNode(Object d){
+    public DoubleNode(Object d){
         data = d ;
         next = null ;
         prev = null ;

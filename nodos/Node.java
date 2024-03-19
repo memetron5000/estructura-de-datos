@@ -1,13 +1,13 @@
-public class Node{
+public class Node extends ejec{
     private Object data;
     private  Node next;
     
-    public void Node(){
+    public Node(){
         data = null ;
         next = null ;
     }
 
-    public void Node(Object e){
+    public Node(Object e){
         this.data = e ;
         this.next = null;
     }

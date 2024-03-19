@@ -1,9 +1,9 @@
-public class DoubleList {
+public class DoubleList extends ejec {
     private DoubleNode head ;
     private DoubleNode tail ;
     private int size ;
 
-    public void DoubleList(){
+    public DoubleList(){
         head = null ;
         tail = null ;
         size = 0 ;

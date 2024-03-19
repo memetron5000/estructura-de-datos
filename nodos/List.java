@@ -1,9 +1,9 @@
-public class List{
+public class List extends ejec{
     private Node head;
     private Node tail;
     private int size;
 
-    public void List(){
+    public List(){
         head = null ;
         tail = null ;
         size = 0 ;
@@ -65,7 +65,7 @@ public class List{
         }
     }
 
-    public Object removeLast(Object e){
+    public Object removeLast(){
         if (size == 1){
             return removeFirst() ;
         } else {
