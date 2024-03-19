@@ -4,9 +4,9 @@ public class DoubleList extends ejec {
     private int size ;
 
     public DoubleList(){
-        head = null ;
-        tail = null ;
-        size = 0 ;
+        this.head = null ;
+        //tail = null ;
+        //size = 0 ;
     }
 
     public int size(){
@@ -40,12 +40,17 @@ public class DoubleList extends ejec {
 
     public void addLast(Object e){
         DoubleNode n = new DoubleNode(e) ;
-        if (isEmpty()){
+        if (head == null){
             head = n ;
+            size++;
             tail = n ;
         } else {
-            tail.setNext(n);
-            n.setPrev(tail);
+            DoubleNode ss = head;
+            while (ss.getNext() != null){
+                ss = ss.getNext();
+            }
+            ss.setNext(n);
+            n.setPrev(ss);
             tail = n ;
             size++ ;
         }
