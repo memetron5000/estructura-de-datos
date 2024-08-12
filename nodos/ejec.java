@@ -124,7 +124,7 @@ public class ejec {
         u2.setEmail(usuario2[5]);
 
 
-        String[] usuario3={"Angel Cachon","5137382","20-06-2004","Calle65 12-2 barrio Volador - Medallo", "3132958063", "angca@gmail.com"};
+        String[] usuario3={"Angel Pimienta","5137382","20-06-2004","Calle65 12-2 barrio Volador - Medallo", "3132958063", "angca@gmail.com"};
         u3.setNombre(usuario3[0]);
         u3.setID(Long.valueOf(usuario3[1]));
         f.setDia((short)20);
@@ -156,7 +156,7 @@ public class ejec {
         u4.setEmail(usuario4[5]);
 
 
-        String[] usuario5 ={"Jesus Armando","1306332","04-07-2000","Call63 42-21 barrio sabaneta - medallo", "313234063", "chimbo@gmail.com"};
+        String[] usuario5 ={"Andres Pitalito","1306332","04-07-2000","Call63 42-21 barrio sabaneta - medallo", "313234063", "casni@gmail.com"};
         u5.setNombre(usuario5[0]);
         u5.setID(Long.valueOf(usuario5[1]));
         f.setDia((short)20);
