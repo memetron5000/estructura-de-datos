@@ -1,0 +1,6 @@
+
+Santiago Ramos,1233332,30-11-2003,Calle23 29-21,Sabaneta,Medallo,314223322,san@gmail.com
+Nicole Guarana,4335332,11-04-2005,Calle15 23-76,barrio Arkadia,Medallo,3206383389,ngua@gmail.com
+Angel Cachon,5137382,20-06-2004,Calle65 12-2,barrio Volador,Medallo, 3132958063, angca@gmail.com
+Jesus Armando,9266472,04-07-2000,Calle63 42-21,barrio Volador,Medallo, 3132958063, yisus@gmail.com
+Andres pitalito,1306332,04-07-2000,Calle63 42-21,barrio sabaneta,medallo, 313234063, casni@gmail.com
