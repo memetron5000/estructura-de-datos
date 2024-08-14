@@ -97,7 +97,7 @@ public class List {
         }
 
     }
-<<<<<<< HEAD
+
 
     // Metodo especifico para Users
 
@@ -132,20 +132,16 @@ public class List {
 
         }
 
-
     }
 
     public void mostrarList(){
         Node temp = head;
-        while(temp != tail && (temp != null)){
-            System.out.println(temp.getData());
-
-=======
-    public void mostrarList(){
-        Node temp = head;
         while(temp != tail){
             System.out.println(temp.getData());
+<<<<<<< HEAD
 >>>>>>> 28c799d (refactoring structure)
+=======
+>>>>>>> 960c569 (failure fetch)
             temp = temp.getNext();
         }
         System.out.println(temp.getData());

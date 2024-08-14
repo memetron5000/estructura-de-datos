@@ -1,10 +1,11 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectStreamException;
 
-public class Main {
+public class Reader {
 
-    private static void leer_archivo(List datos){
+    static void leer_archivo(List datos){
 
         try{
             BufferedReader lector = new BufferedReader(new FileReader("lab 5/Empleados.txt"));
@@ -12,10 +13,13 @@ public class Main {
             while ((line=lector.readLine()) != null){
                 String[] bloque = line.split(" ");
                 // Retomamos los valores
+
                 String nombre = bloque[0];
                 int cedula = Integer.parseInt(bloque[1]);
 
-                datos.addLast(nombre);
+                //Object temp = new Users(nombre, cedula);
+
+                datos.insertar(nombre, cedula);
             }
             lector.close();
 
@@ -25,33 +29,5 @@ public class Main {
 
 
     }
-<<<<<<< HEAD
->>>>>>> 28c799d (refactoring structure)
 
-=======
->>>>>>> 960c569 (failure fetch)
-    public static void main(String[] args){
-        List datos = new List();
-        Users a = new Users("Angel", 403032);
-        datos.addFirst(a);
-
-        // Lectura de datos
-        Reader.leer_archivo(datos);
-
-
-        datos.mostrarList();
-
-
-<<<<<<< HEAD
-=======
-        // Lectura de datos
-        leer_archivo(datos);
-
-        datos.mostrarList();
-
->>>>>>> 28c799d (refactoring structure)
-=======
->>>>>>> 960c569 (failure fetch)
-    }
 }
-
