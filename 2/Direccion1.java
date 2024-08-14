@@ -1,3 +1,4 @@
+/*
 public class Direccion extends ejecutar {
 
     private String calle;
@@ -54,11 +55,12 @@ public class Direccion extends ejecutar {
     @Override
     public String toString() {
         return "Direccion:\n Calle="+calle+"\n Nomenclatura= "+nomenclatura+"\n Barrio= "+barrio+"\n Ciudad= "+ciudad+"\n Edificio= "+edificio+"\n Apto= "+apto;
-
-
-    }
+        
+    
+}
     public void setCiudad_nacimiento(String string) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setCiudad_nacimiento'");
     }
 }
+*/
