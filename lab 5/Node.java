@@ -1,4 +1,4 @@
-public class Node extends ejec{
+public class Node{
     private Object data;
     private  Node next;
     

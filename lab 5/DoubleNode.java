@@ -1,4 +1,4 @@
-public class DoubleNode extends ejec{
+public class DoubleNode{
     private Object data ;
     private DoubleNode next ;
     private DoubleNode prev ;

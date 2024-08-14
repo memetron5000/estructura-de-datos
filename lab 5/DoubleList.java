@@ -1,12 +1,12 @@
-public class DoubleList extends ejec {
+public class DoubleList{
     private DoubleNode head ;
     private DoubleNode tail ;
     private int size ;
 
     public DoubleList(){
-        this.head = null ;
-        //tail = null ;
-        //size = 0 ;
+        head = null ;
+        tail = null ;
+        size = 0 ;
     }
 
     public int size(){
@@ -100,7 +100,7 @@ public class DoubleList extends ejec {
         }
     }
 
-    public void addBefore(DoubleNode n, Object e){
+    public Object addBefore(DoubleNode n, Object e){
         if (n == head){
             addFirst(e);
         } else{
@@ -111,7 +111,9 @@ public class DoubleList extends ejec {
             m.setNext(n);
             n.setPrev(m);
             size++ ;
+            return e;
         }
+        return null;
     }
 
     public void addAfter(DoubleNode n, Object e) {
@@ -126,5 +128,14 @@ public class DoubleList extends ejec {
             nx.setPrev(m);
             size++; 
         }
+    }
+
+    public void showList(){
+        DoubleNode a = head;
+        while (a != tail){
+            System.out.println(a.getData());
+            a = a.getNext();
+        }
+        System.out.println(a.getData());
     }
 }
