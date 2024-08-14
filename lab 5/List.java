@@ -97,6 +97,7 @@ public class List {
         }
 
     }
+<<<<<<< HEAD
 
     // Metodo especifico para Users
 
@@ -139,6 +140,12 @@ public class List {
         while(temp != tail && (temp != null)){
             System.out.println(temp.getData());
 
+=======
+    public void mostrarList(){
+        Node temp = head;
+        while(temp != tail){
+            System.out.println(temp.getData());
+>>>>>>> 28c799d (refactoring structure)
             temp = temp.getNext();
         }
         System.out.println(temp.getData());
