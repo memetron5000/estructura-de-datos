@@ -98,9 +98,47 @@ public class List {
 
     }
 
+/*
+    public void ordenar(){
+        if (head == null) {
+            return;
+        }
+
+        boolean swapped;
+        Node ptr1;
+        Node lptr = null;
+
+        //Desectructuracion
+        //Users user = (Users) head.getData();
+
+        do {
+            swapped = false;
+            ptr1 = head;
+
+            Users user = (Users) head.getData();
+            Users userN = (Users) head.getNext().getData();
+
+            while (ptr1.getNext() != lptr) {
+                if (user.getCedula() > userN.getCedula()) {
+                    // Intercambiar los datos de los nodos
+                    Users temp = ptr1.data;
+                    ptr1.data = ptr1.siguiente.data;
+                    ptr1.siguiente.data = temp;
+                    swapped = true;
+                }
+                ptr1 = ptr1.siguiente;
+            }
+            lptr = ptr1;
+        } while (swapped);
+    }
+
+    }
+
+*/
+
 
     // Metodo especifico para Users
-
+/*
     public void insertar(String name, int cedula){
         Users one = new Users(name, cedula);
         Node n = new Node(one);
@@ -133,7 +171,7 @@ public class List {
         }
 
     }
-
+*/
     public void mostrarList(){
         Node temp = head;
         while(temp != tail){
