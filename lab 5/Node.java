@@ -1,5 +1,5 @@
 public class Node{
-    private Object data;
+    private User data;
     private  Node next;
     
     public Node(){
@@ -7,19 +7,19 @@ public class Node{
         next = null ;
     }
 
-    public Node(Object e){
+    public Node(User e){
         this.data = e ;
         this.next = null;
     }
 
     public void setData(Object e){
-        this.data = e;
+        this.data = (User) e;
     }
     public void setNext(Node n){
         this.next = n ;
     }
 
-    public Object getData(){
+    public User getData(){
         return data ;
     }
     public Node getNext(){ 
