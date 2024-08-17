@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
 
 <<<<<<< HEAD
@@ -35,14 +37,12 @@ public class Main {
         // Lectura de datos
         Reader.leer_archivo(datos);
 
-        System.out.println("Lista normal");
-        datos.mostrarList();
-
+        // Datos de prueba
         datos.sort();
         System.out.println("Lista ordenada");
-
         datos.mostrarList();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         // Lectura de datos
@@ -53,6 +53,40 @@ public class Main {
 >>>>>>> 28c799d (refactoring structure)
 =======
 >>>>>>> 960c569 (failure fetch)
+=======
+
+        Scanner sc = new Scanner(System.in);
+        int id;
+        String pass;
+        System.out.println("INICIO DEL PROGRAMA \nPOR FAVOR INGRESE SU IDENTIFICACION");
+        id = Integer.parseInt(sc.nextLine());
+        System.out.println("POR FAVOR INGRESE SU CONTRASEÑA");
+        pass = sc.nextLine();
+
+        int intentos = 0;
+
+        while (intentos < 3){
+            if (!Reader.comprobar_pass(id, pass).equals("true")){
+                System.out.println("POR FAVOR INGRESE SU IDENTIFICACION");
+                id = Integer.parseInt(sc.nextLine());
+                System.out.println("POR FAVOR INGRESE SU CONTRASEÑA");
+                pass = sc.nextLine();
+                Reader.comprobar_pass(id, pass);
+                intentos ++;
+            } else {
+                System.out.println("BIENVENIDO AL SISTEMA");
+                intentos = 3;
+            }
+
+        }
+
+
+
+
+
+
+
+>>>>>>> c7ac9d2 (add test in main verified)
     }
 }
 
