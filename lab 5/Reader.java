@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectStreamException;
 
 public class Reader {
 
@@ -12,14 +11,16 @@ public class Reader {
             String line = "";
             while ((line=lector.readLine()) != null){
                 String[] bloque = line.split(" ");
-                // Retomamos los valores
 
+
+                // Retomamos los valores
                 String nombre = bloque[0];
                 int cedula = Integer.parseInt(bloque[1]);
 
-                //Object temp = new Users(nombre, cedula);
+                // agregamos el usuario desde el txt
+                User temp = new User(nombre, cedula);
 
-                datos.insertar(nombre, cedula);
+                datos.addLast(temp);
             }
             lector.close();
 

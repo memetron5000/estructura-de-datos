@@ -1,9 +1,6 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
 public class Main {
 
+<<<<<<< HEAD
     private static void leer_archivo(List datos){
 
         try{
@@ -30,17 +27,21 @@ public class Main {
 
 =======
 >>>>>>> 960c569 (failure fetch)
+=======
+>>>>>>> b6e1ae9 (update in files reader and show list in main)
     public static void main(String[] args){
         List datos = new List();
-        Users a = new Users("Angel", 403032);
-        datos.addFirst(a);
 
         // Lectura de datos
         Reader.leer_archivo(datos);
 
-
+        System.out.println("Lista normal");
         datos.mostrarList();
 
+        datos.sort();
+        System.out.println("Lista ordenada");
+
+        datos.mostrarList();
 
 <<<<<<< HEAD
 =======

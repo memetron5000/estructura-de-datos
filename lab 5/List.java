@@ -38,7 +38,7 @@ public class List {
 
     }
 
-    public void addFirst(Object e){
+    public void addFirst(User e){
         Node n = new Node(e);
         if (isEmpty()){
             head = n;
@@ -50,7 +50,7 @@ public class List {
         size++;
     }
 
-    public void addLast(Object e){
+    public void addLast(User e){
         Node n =  new Node(e);
         if (isEmpty()){
             head = n;
@@ -98,80 +98,42 @@ public class List {
 
     }
 
-/*
-    public void ordenar(){
-        if (head == null) {
+    public void sort(){
+        if(head == null ){//&& head.getNext() == null
             return;
         }
+        boolean intercambio;
 
-        boolean swapped;
-        Node ptr1;
-        Node lptr = null;
+        do{
+            intercambio = false;
+            Node current = head;
+            Node previous = null;
 
-        //Desectructuracion
-        //Users user = (Users) head.getData();
+            while (current != null && current.getNext() != null){
+                Node next = current.getNext();
 
-        do {
-            swapped = false;
-            ptr1 = head;
+                if (current.getData().getCedula() > next.getData().getCedula()){
+                    if (previous != null){
+                        previous.setNext(next);
+                    } else {
+                        head = next;
+                    }
+                    current.setNext(next.getNext());
+                    next.setNext(current);
 
-            Users user = (Users) head.getData();
-            Users userN = (Users) head.getNext().getData();
-
-            while (ptr1.getNext() != lptr) {
-                if (user.getCedula() > userN.getCedula()) {
-                    // Intercambiar los datos de los nodos
-                    Users temp = ptr1.data;
-                    ptr1.data = ptr1.siguiente.data;
-                    ptr1.siguiente.data = temp;
-                    swapped = true;
+                    intercambio = true;
                 }
-                ptr1 = ptr1.siguiente;
+
+                previous = current;
+                current = current.getNext();
             }
-            lptr = ptr1;
-        } while (swapped);
+            if (previous != null){
+                tail = previous;
+            }
+        } while (intercambio);
     }
 
-    }
 
-*/
-
-
-    // Metodo especifico para Users
-/*
-    public void insertar(String name, int cedula){
-        Users one = new Users(name, cedula);
-        Node n = new Node(one);
-
-        if (isEmpty()){
-            head = n;
-        } else{
-            Node temp = head;
-            Node ant = null;
-
-            //Desectructuracion
-            Users user = (Users) head.getData();
-
-            while (temp != null && user.getCedula() < cedula){
-                ant = temp;
-                temp = temp.getNext();
-            }
-
-            if (temp == null){
-                addLast(one);
-            } else{
-                if (ant == null){
-                    addFirst(one);
-                }else {
-                    ant.setNext(n);
-                    n.setNext(temp);
-                }
-            }
-
-        }
-
-    }
-*/
     public void mostrarList(){
         Node temp = head;
         while(temp != tail){
