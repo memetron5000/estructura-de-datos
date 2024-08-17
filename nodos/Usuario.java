@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Usuario extends ejec{
+public class Usuario {
     private String nombre;
     private Long ID;
     private Fecha fecha_nacimiento;
