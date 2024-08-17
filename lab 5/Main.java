@@ -1,8 +1,11 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-<<<<<<< HEAD
     private static void leer_archivo(List datos){
 
         try{
@@ -14,7 +17,9 @@ public class Main {
                 String nombre = bloque[0];
                 int cedula = Integer.parseInt(bloque[1]);
 
-                datos.addLast(nombre);
+                User u = new User(nombre, cedula);
+
+                datos.addLast(u);
             }
             lector.close();
 
@@ -24,13 +29,7 @@ public class Main {
 
 
     }
-<<<<<<< HEAD
->>>>>>> 28c799d (refactoring structure)
 
-=======
->>>>>>> 960c569 (failure fetch)
-=======
->>>>>>> b6e1ae9 (update in files reader and show list in main)
     public static void main(String[] args){
         List datos = new List();
 
@@ -42,18 +41,11 @@ public class Main {
         System.out.println("Lista ordenada");
         datos.mostrarList();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
         // Lectura de datos
         leer_archivo(datos);
 
         datos.mostrarList();
 
->>>>>>> 28c799d (refactoring structure)
-=======
->>>>>>> 960c569 (failure fetch)
-=======
 
         Scanner sc = new Scanner(System.in);
         int id;
@@ -80,13 +72,6 @@ public class Main {
 
         }
 
-
-
-
-
-
-
->>>>>>> c7ac9d2 (add test in main verified)
     }
 }
 

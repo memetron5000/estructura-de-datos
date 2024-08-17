@@ -138,10 +138,6 @@ public class List {
         Node temp = head;
         while(temp != tail){
             System.out.println(temp.getData());
-<<<<<<< HEAD
->>>>>>> 28c799d (refactoring structure)
-=======
->>>>>>> 960c569 (failure fetch)
             temp = temp.getNext();
         }
         System.out.println(temp.getData());
