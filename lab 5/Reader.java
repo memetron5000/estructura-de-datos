@@ -1,3 +1,4 @@
+import javax.imageio.IIOException;
 import java.io.*;
 import java.util.Objects;
 
@@ -8,7 +9,7 @@ public class Reader {
     static void leer_archivo(DoubleList datos){
 
         try{
-            // solo vscode
+            // Para vscode
             //String carpetadescargas =System.getProperty("user.home")+File.separator+"Desktop"+"/lab 5/"+"Empleados.txt";
             BufferedReader lector = new BufferedReader(new FileReader("lab 5/Empleados.txt"));
             String line = "";
@@ -39,7 +40,7 @@ public class Reader {
     static String comprobar_pass(int c, String p){
 
         try{
-            // Solo vscode
+            // Para vscode
             //String contra =System.getProperty("user.home")+File.separator+"Desktop"+"/lab 5/"+"Password.txt";
             BufferedReader lector = new BufferedReader(new FileReader("lab 5/Password.txt"));
             String line = "";
@@ -64,15 +65,24 @@ public class Reader {
         return "false";
     }
 
-    static void agregarUsuario(int id, String pass, String c){
+    static void agregarUsuario(String name, int id, String pass, String c){
         try{
+            BufferedWriter escritor1 = new BufferedWriter(new FileWriter("lab 5/Empleados.txt", true));
             BufferedWriter escritor = new BufferedWriter(new FileWriter("lab 5/Password.txt", true));
-            escritor.newLine();
+
+            String names = name.replace(" ", "-");
+            escritor1.write(names + " " + id );
+            escritor1.newLine();
+            escritor1.close();
+
             if (c.equals("0")){
                 escritor.write(id + " " + pass + " " + "empleado");
+
+                escritor.newLine();
                 System.out.println("Usuario agregado correctamente.");
             }else{
                 escritor.write(id + " " + pass + " " + "administrador");
+                escritor.newLine();
                 System.out.println("Nuevo administrador añadido.");
             }
             escritor.close();
@@ -108,6 +118,50 @@ public class Reader {
             System.out.println("Error al cambiar la contraseña: " + e);
         }
 
+
+    }
+    static void elimiarUsuario(String u){
+        try{
+            BufferedReader lector = new BufferedReader(new FileReader("lab 5/Password.txt"));
+            StringBuilder contenido = new StringBuilder();
+            String line;
+            while ((line= lector.readLine()) != null){
+                if (!line.startsWith(u)){
+                    contenido.append(line).append("\n");
+                }
+            }
+            lector.close();
+
+            BufferedWriter escribir = new BufferedWriter(new FileWriter("lab 5/Password.txt"));
+            escribir.write(contenido.toString());
+            escribir.close();
+            System.out.println("Usuario eliminado correctamente.");
+
+        }catch (IOException e){
+            System.out.println("Error al eliminar el usuario: " + e);
+        }
+
+    }
+
+
+    static void mostrarBandeja(String c){
+        try{
+            BufferedReader banjedaEspecifica = new BufferedReader(new FileReader(c));
+            String linea;
+            DoubleList recibidos;
+            while ((linea = banjedaEspecifica.readLine()) != null){
+                String[] bloque = linea.split(" ");
+                String data = bloque[0];
+                String titulo = bloque[1];
+                String nombre = bloque[2];
+
+
+
+            }
+
+        }catch (IOException e){
+            System.out.println("Hubo un error en la operación");
+        }
 
     }
 

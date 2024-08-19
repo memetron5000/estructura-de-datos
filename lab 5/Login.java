@@ -70,26 +70,51 @@ public class Login {
                                 a = false;
                                 break;
                             case 1:
+                                System.out.println("Ingrese el nombre del nuevo usuario: \n Ejemplo: Juan Perez \n");
+                                String na = scanner.nextLine();
                                 System.out.println("Ingrese la identificacion del nuevo usuario:");
                                 int i = Integer.parseInt(scanner.nextLine());
                                 System.out.println("Ingrese la nueva contraseña:");
                                 String p = scanner.nextLine();
                                 System.out.println("Cargo del nuevo usuario: (0) empleado (1) administrador");
                                 String c = scanner.nextLine();
-                                Reader.agregarUsuario(i, p, c);
+                                Reader.agregarUsuario(na, i, p, c);
                                 break;
                             case 2:
                                 System.out.println("Ingrese el id del usuario: ");
-                                String  d = scanner.nextLine();
+                                String  cedu = scanner.nextLine();
                                 System.out.println("Ingresar la nueva contraseña: ");
-                                String n = scanner.nextLine();
-                                Reader.cambiarPass(d,n);
+                                String contra = scanner.nextLine();
+                                Reader.cambiarPass(cedu, contra);
                                 break;
                             case 3:
-
+                                System.out.println("Ingrese id del usuario a eliminar: ");
+                                String u = scanner.nextLine();
+                                Reader.elimiarUsuario(u);
+                                break;
                             case 4:
+                                System.out.println("Por seguridad confirma tu identificación: ");
+                                String cd = scanner.nextLine();
+                                Inbox.mostrarBandejaEntrada(cd);
+                                break;
 
                             case 5:
+                                System.out.println("\n" + "=".repeat(50));
+                                System.out.printf("|%-48s|\n", "Redactar Nuevo Mensaje");
+                                System.out.println("=".repeat(50));
+
+                                System.out.println("Ingrese la cédula del destinatario:");
+                                System.out.print("> ");
+                                int v = Integer.parseInt(scanner.nextLine());
+
+                                System.out.println("\nIngrese el título del mensaje:");
+                                System.out.print("> ");
+                                String z = scanner.nextLine();
+
+                                System.out.println("\nIngrese el contenido del mensaje:");
+                                System.out.print("> ");
+                                String m = scanner.nextLine();
+                                break;
 
                             default:
                                 System.out.print("error");
@@ -108,8 +133,27 @@ public class Login {
                             System.out.println("Saliendo...");
                             break;
                         case 1:
+
+                            System.out.println("Por seguridad confirma tu identificación: ");
+                            String cd = scanner.nextLine();
+                            Inbox.mostrarBandejaEntrada(cd);
                             break;
                         case 2:
+                            System.out.println("\n" + "=".repeat(50));
+                            System.out.printf("|%-48s|\n", "Redactar Nuevo Mensaje");
+                            System.out.println("=".repeat(50));
+
+                            System.out.println("Ingrese la cédula del destinatario:");
+                            System.out.print("> ");
+                            int v = Integer.parseInt(scanner.nextLine());
+
+                            System.out.println("\nIngrese el título del mensaje:");
+                            System.out.print("> ");
+                            String z = scanner.nextLine();
+
+                            System.out.println("\nIngrese el contenido del mensaje:");
+                            System.out.print("> ");
+                            String m = scanner.nextLine();
                             break;
                         default:
                             System.out.print("error");
