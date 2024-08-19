@@ -2,43 +2,61 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Login {
+    
+    
 
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
 
     public static void welcome() {
-        System.out.println("=".repeat(70));
-        System.out.println(" ".repeat(10) + "Bienvenido al Sistema de Gestión de Empleados");
-        System.out.println("=".repeat(70));
+        String formateo="";
+        for (int i = 0; i < 7;i++){
+            formateo += "==========";
+        }
+        String formateo1="";
+        for (int i = 0; i < 10;i++){
+            formateo1 += " ";
+        }
+        System.out.println(formateo);
+        System.out.println(formateo1 + "Bienvenido al Sistema de Gestión de Empleados");
+        System.out.println(formateo);
         System.out.printf("| %-3s | %-60s |\n", "0", "Salir del sistema");
         System.out.printf("| %-3s | %-60s |\n", "1", "Ingresar al sistema");
-        System.out.println("=".repeat(70));
+        System.out.println(formateo);
         System.out.println("Opción: ");
 
     }
 
     public static void displayAdmin() {
-        System.out.println("\n" + "=".repeat(50));
+        String formateo2="";
+        for (int i = 0; i < 5;i++){
+            formateo2 += "==========";
+        }
+        System.out.println("\n" + formateo2);
         System.out.printf("|%-48s|\n", "Menú Administrador");
-        System.out.println("=".repeat(50));
+        System.out.println(formateo2);
         System.out.printf("| %-3s | %-40s |\n", "0", "Volver al inicio");
         System.out.printf("| %-3s | %-40s |\n", "1", "Registrar nuevo usuario");
         System.out.printf("| %-3s | %-40s |\n", "2", "Cambiar contraseña");
         System.out.printf("| %-3s | %-40s |\n", "3", "Eliminar usuario");
         System.out.printf("| %-3s | %-40s |\n", "4", "Consultar bandeja de entrada");
         System.out.printf("| %-3s | %-40s |\n", "5", "Redactar mensaje");
-        System.out.println("=".repeat(50));
+        System.out.println(formateo2);
         System.out.println("Opción: ");
     }
 
     public static void displayEmpleado() {
-        System.out.println("\n" + "=".repeat(50));
+        String formateo2="";
+        for (int i = 0; i < 5;i++){
+            formateo2 += "==========";
+        }
+        System.out.println("\n" + formateo2);
         System.out.printf("|%-48s|\n", "Menú Empleado");
-        System.out.println("=".repeat(50));
+        System.out.println(formateo2);
         System.out.printf("| %-3s | %-40s |\n", "0", "Salir del sistema");
         System.out.printf("| %-3s | %-40s |\n", "1", "Consultar bandeja de entrada");
         System.out.printf("| %-3s | %-40s |\n", "2", "Redactar mensaje");
-        System.out.println("=".repeat(50));
+        System.out.println(formateo2);
         System.out.println("Opción: ");
     }
 
@@ -56,6 +74,10 @@ public class Login {
     }
 
     public static void login() {
+        String formateo2="";
+        for (int i = 0; i < 5;i++){
+            formateo2 += "==========";
+        }
         Scanner scanner = new Scanner(System.in);
         int id;
         String pass;
@@ -111,9 +133,9 @@ public class Login {
                                 break;
 
                             case 5:
-                                System.out.println("\n" + "=".repeat(50));
+                                System.out.println("\n" + formateo2);
                                 System.out.printf("|%-48s|\n", "Redactar Nuevo Mensaje");
-                                System.out.println("=".repeat(50));
+                                System.out.println(formateo2);
 
                                 System.out.println("Ingrese la cédula del destinatario:");
                                 System.out.print("> ");
@@ -154,9 +176,9 @@ public class Login {
                                 case4(scanner, id, cases);
                                 break;
                             case 2:
-                                System.out.println("\n" + "=".repeat(50));
+                                System.out.println("\n" + formateo2);
                                 System.out.printf("|%-48s|\n", "Redactar Nuevo Mensaje");
-                                System.out.println("=".repeat(50));
+                                System.out.println(formateo2);
 
                                 System.out.println("Ingrese la cédula del destinatario:");
                                 System.out.print("> ");
