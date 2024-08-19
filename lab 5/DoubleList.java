@@ -175,7 +175,6 @@ public class DoubleList{
     }
 
 
-
     public void showList(){
         DoubleNode a = head;
         while (a != tail){
