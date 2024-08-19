@@ -42,6 +42,19 @@ public class Login {
         System.out.println("Opción: ");
     }
 
+    public static String saberName(int id){
+
+        DoubleNode head = Main.datos.first();
+        while(head != null){
+
+            if(((User)head.getData()).getCedula() == id){
+                return ((User) head.getData()).getName().replace("-", " ");
+            }
+            head = head.getNext();
+        }
+        return "";
+    }
+
     public static void login() {
         Scanner scanner = new Scanner(System.in);
         int id;
@@ -93,9 +106,8 @@ public class Login {
                                 Reader.elimiarUsuario(u);
                                 break;
                             case 4:
-                                System.out.println("Por seguridad confirma tu identificación: ");
-                                String cd = scanner.nextLine();
-                                Inbox.mostrarBandejaEntrada(cd);
+                                boolean casos = true;
+                                case4(scanner, id, casos);
                                 break;
 
                             case 5:
@@ -105,15 +117,18 @@ public class Login {
 
                                 System.out.println("Ingrese la cédula del destinatario:");
                                 System.out.print("> ");
-                                int v = Integer.parseInt(scanner.nextLine());
+                                String cedula = scanner.nextLine();
 
                                 System.out.println("\nIngrese el título del mensaje:");
                                 System.out.print("> ");
-                                String z = scanner.nextLine();
+                                String title = scanner.nextLine();
 
                                 System.out.println("\nIngrese el contenido del mensaje:");
                                 System.out.print("> ");
-                                String m = scanner.nextLine();
+                                String msm = scanner.nextLine();
+
+                                Inbox.enviarMensaje(cedula, title, msm, saberName(id));
+
                                 break;
 
                             default:
@@ -124,39 +139,45 @@ public class Login {
 
                 }
                 else if (comp.equals("empleado")){
-                    int ingresado;
-                    displayEmpleado();
-                    ingresado = scanner.nextInt();
+                    boolean a = true;
+                    while (a){
+                        int ingress;
+                        displayEmpleado();
+                        ingress = Integer.parseInt(scanner.nextLine());
+                        switch (ingress) {
+                            case 0:
+                                System.out.println("Saliendo...");
+                                a = false;
+                                break;
+                            case 1:
+                                boolean cases = true;
+                                case4(scanner, id, cases);
+                                break;
+                            case 2:
+                                System.out.println("\n" + "=".repeat(50));
+                                System.out.printf("|%-48s|\n", "Redactar Nuevo Mensaje");
+                                System.out.println("=".repeat(50));
 
-                    switch (ingresado) {
-                        case 0:
-                            System.out.println("Saliendo...");
-                            break;
-                        case 1:
+                                System.out.println("Ingrese la cédula del destinatario:");
+                                System.out.print("> ");
+                                String cedula = scanner.nextLine();
 
-                            System.out.println("Por seguridad confirma tu identificación: ");
-                            String cd = scanner.nextLine();
-                            Inbox.mostrarBandejaEntrada(cd);
-                            break;
-                        case 2:
-                            System.out.println("\n" + "=".repeat(50));
-                            System.out.printf("|%-48s|\n", "Redactar Nuevo Mensaje");
-                            System.out.println("=".repeat(50));
+                                System.out.println("\nIngrese el título del mensaje:");
+                                System.out.print("> ");
+                                String title = scanner.nextLine();
 
-                            System.out.println("Ingrese la cédula del destinatario:");
-                            System.out.print("> ");
-                            int v = Integer.parseInt(scanner.nextLine());
+                                System.out.println("\nIngrese el contenido del mensaje:");
+                                System.out.print("> ");
+                                String msm = scanner.nextLine();
 
-                            System.out.println("\nIngrese el título del mensaje:");
-                            System.out.print("> ");
-                            String z = scanner.nextLine();
+                                Inbox.enviarMensaje(cedula, title, msm, saberName(id));
 
-                            System.out.println("\nIngrese el contenido del mensaje:");
-                            System.out.print("> ");
-                            String m = scanner.nextLine();
-                            break;
-                        default:
-                            System.out.print("error");
+                                break;
+
+                            default:
+                                System.out.print("error");
+                        }
+
                     }
                 } else {
                     System.out.println(ANSI_RED + "Usuario o contraseña incorrecta." + ANSI_RESET);
@@ -170,32 +191,18 @@ public class Login {
         scanner.close();
 
     }
+
+    private static void case4(Scanner scanner, int id, boolean casos) {
+        while (casos){
+            Inbox.mostrarBandejaEntrada(String.valueOf(id));
+
+            System.out.printf("| %-3s | %-40s |\n", "0", "Atras");
+            System.out.printf("| %-3s | %-40s |\n", "1", "Volver al menu");
+            String back = scanner.nextLine();
+            if (back.equals("1")){
+                casos = false;
+            }
+        }
+    }
 }
-
-
-
-        // Scanner sc = new Scanner(System.in);
-        // int id;
-        // String pass;
-        // System.out.println("INICIO DEL PROGRAMA \nPOR FAVOR INGRESE SU IDENTIFICACION");
-        // id = Integer.parseInt(sc.nextLine());
-        // System.out.println("POR FAVOR INGRESE SU CONTRASEÑA");
-        // pass = sc.nextLine();
-
-        // int intentos = 0;
-
-        // while (intentos < 3){
-        //     if (!Reader.comprobar_pass(id, pass).equals("true")){
-        //         System.out.println("POR FAVOR INGRESE SU IDENTIFICACION");
-        //         id = Integer.parseInt(sc.nextLine());
-        //         System.out.println("POR FAVOR INGRESE SU CONTRASEÑA");
-        //         pass = sc.nextLine();
-        //         Reader.comprobar_pass(id, pass);
-        //         intentos ++;
-        //     } else {
-        //         System.out.println("BIENVENIDO AL SISTEMA");
-        //         intentos = 3;
-        //     }
-
-        // }
 

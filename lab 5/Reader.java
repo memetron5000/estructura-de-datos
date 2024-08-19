@@ -67,6 +67,13 @@ public class Reader {
 
     static void agregarUsuario(String name, int id, String pass, String c){
         try{
+
+            // Se crea su bandeja de entrada
+            String ruta = "lab 5/" + String.valueOf(id) + "BA.txt";
+            File file = new File(ruta);
+            file.createNewFile();
+
+
             BufferedWriter escritor1 = new BufferedWriter(new FileWriter("lab 5/Empleados.txt", true));
             BufferedWriter escritor = new BufferedWriter(new FileWriter("lab 5/Password.txt", true));
 
@@ -95,6 +102,7 @@ public class Reader {
 
     static void cambiarPass(String id, String nuevaPass) {
         try {
+            //actualizar contenido en password
             BufferedReader leer = new BufferedReader(new FileReader("lab 5/Password.txt"));
             StringBuilder contenido = new StringBuilder();
             String line = "";
@@ -122,6 +130,7 @@ public class Reader {
     }
     static void elimiarUsuario(String u){
         try{
+            // actualizar el archivo password
             BufferedReader lector = new BufferedReader(new FileReader("lab 5/Password.txt"));
             StringBuilder contenido = new StringBuilder();
             String line;
@@ -135,6 +144,22 @@ public class Reader {
             BufferedWriter escribir = new BufferedWriter(new FileWriter("lab 5/Password.txt"));
             escribir.write(contenido.toString());
             escribir.close();
+
+
+            // actualizar archivo Empleados
+            BufferedReader lector1 = new BufferedReader(new FileReader("lab 5/Empleados.txt"));
+            StringBuilder contenido1 = new StringBuilder();
+            String line1;
+            while ((line1=lector1.readLine()) != null){
+                String[] bloque = line1.split(" ");
+                if (!bloque[1].startsWith(u)){
+                    contenido1.append(line1).append("\n");
+                }
+            }
+            lector1.close();
+            BufferedWriter escribir1 = new BufferedWriter(new FileWriter("lab 5/Empleados.txt"));
+            escribir1.write(contenido1.toString());
+            escribir1.close();
             System.out.println("Usuario eliminado correctamente.");
 
         }catch (IOException e){
@@ -144,23 +169,65 @@ public class Reader {
     }
 
 
-    static void mostrarBandeja(String c){
+    static DoubleList mostrarBandeja(String c){
+        DoubleList recibidos = new DoubleList();
         try{
-            BufferedReader banjedaEspecifica = new BufferedReader(new FileReader(c));
+            BufferedReader banjedaEspecific = new BufferedReader(new FileReader(c));
             String linea;
-            DoubleList recibidos;
-            while ((linea = banjedaEspecifica.readLine()) != null){
-                String[] bloque = linea.split(" ");
+            while ((linea = banjedaEspecific.readLine()) != null){
+                String[] bloque = linea.split(",");
                 String data = bloque[0];
                 String titulo = bloque[1];
                 String nombre = bloque[2];
 
+                Cuenta cuenta = new Cuenta(data, titulo, nombre);
 
+                recibidos.addLast(cuenta);
 
             }
+            banjedaEspecific.close();
 
         }catch (IOException e){
-            System.out.println("Hubo un error en la operación");
+            System.out.println("Hubo un error en la operación: " + e);
+        }
+
+        return recibidos;
+    }
+
+    static String mostrarLineaSeleccionada(String archivo, int linea){
+        try{
+            BufferedReader banjedaEspecifica = new BufferedReader(new FileReader(archivo));
+            int contadorLineas = 1;
+            String mensaje;
+            String readline;
+            while ((readline = banjedaEspecifica.readLine()) != null){
+                if(linea == contadorLineas){
+                    String[] bloque = readline.split(",");
+                    mensaje = bloque[bloque.length-1];
+                    return mensaje;
+                }
+                contadorLineas++;
+
+            }
+            banjedaEspecifica.close();
+
+
+        }catch (IOException e){
+            System.out.println("Hubo un error en la operación: " + e);
+        }
+        return "";
+    }
+
+    static void addEmail(String ruta, String linea){
+        try{
+            BufferedWriter escribir = new BufferedWriter(new FileWriter(ruta, true));
+            escribir.write(linea);
+            escribir.newLine();
+            System.out.println("Mensaje enviado correctamente.");
+            escribir.close();
+
+        }catch (IOException e){
+            System.out.println("Ha ocurrido un error al enviar mensaje");
         }
 
     }
