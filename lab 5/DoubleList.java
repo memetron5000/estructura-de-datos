@@ -130,6 +130,52 @@ public class DoubleList{
         }
     }
 
+    public void sort() {
+        if (head == null) {
+            return;
+        }
+        boolean intercambio;
+
+        do {
+            intercambio = false;
+            DoubleNode current = head;
+
+            while (current != null && current.getNext() != null) {
+                DoubleNode next = current.getNext();
+
+                // Comparar datos de los nodos
+                if (((User)current.getData()).getCedula() > ((User)next.getData()).getCedula()) {
+                    // Realizar el intercambio
+                    DoubleNode prev = current.getPrev();
+                    DoubleNode nextNext = next.getNext();
+
+                    if (prev != null) {
+                        prev.setNext(next);
+                    } else {
+                        head = next;
+                    }
+
+                    if (nextNext != null) {
+                        nextNext.setPrev(current);
+                    } else {
+                        tail = current;
+                    }
+
+                    next.setPrev(prev);
+                    current.setNext(nextNext);
+                    next.setNext(current);
+                    current.setPrev(next);
+
+                    intercambio = true;
+                }
+
+                current = current.getNext();
+            }
+        } while (intercambio);
+    }
+
+
+
     public void showList(){
         DoubleNode a = head;
         while (a != tail){
