@@ -99,7 +99,7 @@ public class List {
     }
 
     public void sort(){
-        if(head == null ){//&& head.getNext() == null
+        if(head == null ){
             return;
         }
         boolean intercambio;
