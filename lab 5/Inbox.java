@@ -2,6 +2,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+import java.io.*; 
 
 public class Inbox {
 
@@ -17,14 +18,23 @@ public class Inbox {
     }
 
     public static void mostrarBandejaEntrada(String c) {
+        String formateo2="";
+        for (int i = 0; i < 5;i++){
+            formateo2 += "==========";
+        }
+        String formateo="";
+        for (int i = 0; i < 5;i++){
+            formateo += "==========";
+        }
         Scanner scanner = new Scanner(System.in);
-        String addTxt = "lab 5/Emails/" + c + "BA.txt";
-        System.out.println("\n" + "=".repeat(70));
+        String mail =System.getProperty("user.home")+File.separator+"Desktop"+"/estructura-de-datos-main/lab 5/Emails/"+ c + "BA.txt";
+        String addTxt = mail;
+        System.out.println("\n" + formateo);
         System.out.printf("|%-48s|\n", "Bandeja de Entrada");
-        System.out.println("=".repeat(70));
+        System.out.println(formateo);
 
         System.out.printf("| %-3s | %-19s | %-20s | %-20s |\n", "Nº", "Fecha de Recepción", "titulo", "Remitente");
-        System.out.println("=".repeat(70));
+        System.out.println(formateo);
 
         DoubleList a = Reader.mostrarBandeja(addTxt);
         DoubleNode head = a.first();
@@ -43,12 +53,12 @@ public class Inbox {
         }
 
 
-        System.out.println("=".repeat(50));
+        System.out.println(formateo2);
         System.out.println("Seleccione un mensaje para leerlo (ingrese el número): ");
         int correoSeleccionado = Integer.parseInt(scanner.nextLine());
         String response = Reader.mostrarLineaSeleccionada(addTxt,correoSeleccionado);
         System.out.printf("|%-48s|\n", "Bandeja de Entrada");
-        System.out.println("=".repeat(50));
+        System.out.println(formateo2);
         System.out.printf("|%-48s|\n", response);
 
     }
@@ -59,8 +69,8 @@ public class Inbox {
 
         String uno = format.format(date);
         System.out.println(uno);
-
-        String addRuta ="lab 5/Emails/" +  id + "BA.txt";
+        String enviarme =System.getProperty("user.home")+File.separator+"Desktop"+"/estructura-de-datos-main/lab 5/Emails/" +  id + "BA.txt";
+        String addRuta =enviarme;
 
         String linea = uno + "," + title + "," + redactor + "," + cuerpo;
 
